@@ -7,7 +7,7 @@
 
     <!-- Set the Background Image-->
     <item
-        android:drawable="@drawable/ic_teko_white"
+        android:drawable="@drawable/ic_teko_white_splash"
         android:gravity="center">
 
     </item>
