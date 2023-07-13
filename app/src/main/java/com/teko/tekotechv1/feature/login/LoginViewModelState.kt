@@ -1,7 +1,7 @@
 package com.teko.tekotechv1.feature.login
 
-import com.teko.domain.AccessToken
-import com.teko.domain.User
+import com.teko.techdata.remote.features.auth.domain.AccessToken
+import com.teko.techdata.remote.features.auth.domain.User
 
 sealed class LoginViewModelState {
 

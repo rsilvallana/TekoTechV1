@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+apply from: '../ktlint.gradle'
+apply from: '../config.gradle'
+
+android {
+    compileSdk Android.targetSdkVersion
+
+    defaultConfig {
+        minSdk Android.minSdkVersion
+        targetSdk Android.targetSdkVersion
+        versionCode Android.versionCode
+        versionName Android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            releaseApi.each { key, value ->
+                buildConfigField 'String', key, "\"" + value + "\""
+            }
+        }
+        debug {
+            debuggable true
+            stagingApi.each { key, value ->
+                buildConfigField 'String', key, "\"" + value + "\""
+            }
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+check.dependsOn(ktlint)
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Retrofit
+    api Libs.retrofit
+    api Libs.retrofitRxJava2
+    api Libs.retrofitGson
+    api Libs.retrofitScalar
+
+    // OkHttp
+    api Libs.okhttp
+    api Libs.okhttpLogging
+
+    // Dagger-Hilt
+    api Libs.hilt
+    kapt Libs.hiltCompiler
+
+    // Chucker
+    debugImplementation Libs.chuckerDebug
+    releaseImplementation Libs.chuckerRelease
+
+    // Room
+    api Libs.room
+    api Libs.roomRx
+    kapt Libs.roomCompiler
+
+    // Preference
+    api Libs.preference
+
+    // SQLCipher
+    api Libs.sqlcipher
+    api Libs.sqlite
+
+    // Security Crypto
+    api Libs.securityCrypto
+
+    // JUnit
+    testImplementation TestLibs.junit
+
+    // MockK
+    testImplementation(TestLibs.mockK) {
+        exclude group: 'org.slf4j', module: 'slf4j-reload4j'
+    }
+}

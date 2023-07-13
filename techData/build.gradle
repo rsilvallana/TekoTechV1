@@ -1,16 +1,13 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'kotlin-kapt'
 apply from: '../ktlint.gradle'
 
 android {
-    namespace 'com.teko.tekotechv1'
     compileSdk Android.targetSdkVersion
 
     defaultConfig {
-        applicationId "com.teko.tekotechv1"
         minSdk Android.minSdkVersion
         targetSdk Android.targetSdkVersion
         versionCode Android.versionCode
@@ -18,7 +15,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -29,24 +25,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
 }
 
 check.dependsOn(ktlint)
 
 dependencies {
-    implementation project(':common')
-    implementation project(':techData')
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':commonData')
 
+    // JUnit
     testImplementation TestLibs.junit
-    testImplementation TestLibs.archCoreTesting
-    testImplementation TestLibs.coroutineTest
-    testImplementation(TestLibs.mockK) {
-        exclude group: 'org.slf4j', module: 'slf4j-reload4j'
-    }
+
+    // MockK
+    testImplementation TestLibs.mockK
 }

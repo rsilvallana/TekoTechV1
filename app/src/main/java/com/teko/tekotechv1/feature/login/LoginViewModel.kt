@@ -1,7 +1,7 @@
 package com.teko.tekotechv1.feature.login
 
 import com.teko.common.base.BaseViewModel
-import com.teko.data.features.auth.AuthRepository
+import com.teko.techdata.repository.di.AuthRepository
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy

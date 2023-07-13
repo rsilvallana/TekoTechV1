@@ -1,6 +1,6 @@
 package com.teko.tekotechv1
 
-import com.teko.data.features.auth.AuthRepository
+import com.teko.techdata.repository.di.AuthRepository
 import com.teko.domain.AccessToken
 import com.teko.domain.User
 import com.teko.tekotechv1.feature.login.LoginViewModel

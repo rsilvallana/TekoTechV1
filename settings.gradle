@@ -1,6 +1,4 @@
 include ':app'
 include ':common'
-include ':remote'
-include ':local'
-include ':domain'
-include ':data'
+include ':commonData'
+include ':techData'

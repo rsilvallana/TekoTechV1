@@ -43,16 +43,8 @@ captures/
 
 # IntelliJ IDEA/Android Studio "Ignore Exceptions"
 # Before ranting! See, https://tips.seebrock3r.me/3cce16eb2ea4
-!/.idea/vcs.xml
-!/.idea/fileTemplates/
-!/.idea/inspectionProfiles/
-!/.idea/scopes/
-!/.idea/codeStyles/
-!/.idea/encodings.xml
-!/.idea/copyright/
-!/.idea/compiler.xml
-!/.idea/runConfigurations.xml
-!/.idea/misc.xml
+*.idea
+*.idea/
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
