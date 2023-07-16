@@ -19,6 +19,9 @@ object Versions {
     const val fragmentVersion = "1.3.0-beta01"
     const val firebaseBoMVersion = "28.1.0"
 
+    // Navigation Components
+    const val navigationVersion = "2.5.3"
+
     // Hilt
     const val hiltVersion = "2.42"
 

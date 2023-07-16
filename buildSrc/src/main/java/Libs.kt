@@ -8,6 +8,11 @@ object Libs {
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentVersion}"
 
+    // Navigation Components
+    const val navigationFragments = "androidx.navigation:navigation-fragment:${Versions.navigationVersion}"
+    const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
+    const val navigationFragmentUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
+
     // Dagger Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltVersion}"
