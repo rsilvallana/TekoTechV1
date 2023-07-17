@@ -1,20 +1,25 @@
 package com.teko.tekotechv1.feature.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.teko.common.base.BaseFragment
+import com.teko.tekotechv1.MainActivity
 import com.teko.tekotechv1.R
+import com.teko.tekotechv1.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class LoginFragment : Fragment() {
+@AndroidEntryPoint
+class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    override fun getLayoutId(): Int = R.layout.fragment_login
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupView()
+    }
+
+    private fun setupView() {
+        (activity as MainActivity).hideStatusBar()
     }
 }

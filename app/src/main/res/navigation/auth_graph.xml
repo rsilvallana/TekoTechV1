@@ -11,6 +11,4 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 
-    <include app:graph="@navigation/checkout_graph" />
-
 </navigation>

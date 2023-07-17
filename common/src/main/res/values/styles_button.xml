@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Teko.Button.Contained" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
+        <item name="elevation">0dp</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="android:paddingVertical">4dp</item>
+    </style>
+</resources>

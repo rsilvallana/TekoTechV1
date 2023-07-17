@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Teko.InputLayout.Line.White" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/input_white_bg</item>
+        <item name="boxBackgroundColor">@color/teko_blue</item>
+        <item name="hintTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+    </style>
+
+    <style name="Teko.Input.Line.White" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>
