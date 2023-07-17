@@ -4,4 +4,5 @@ object BuildLibs {
     const val crashlyticsGradlePlugin = "com.google.firebase:firebase-crashlytics-gradle:${Versions.crashlyticsGradlePluginVersion}"
     const val googlePlayPlugin = "com.google.gms:google-services:${Versions.googlePlayVersion}"
     const val navigationPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationPluginVersion}"
+    const val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
 }

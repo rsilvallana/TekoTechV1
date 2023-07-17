@@ -16,6 +16,8 @@ object Libs {
     // Dagger Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltVersion}"
+    const val hiltAndroid = "androidx.hilt:hilt-compiler:${Versions.hiltAndroidVersion}"
+    const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltAndroidVersion}"
 
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
@@ -53,4 +55,7 @@ object Libs {
     const val rxjava2 = "io.reactivex.rxjava2:rxjava:${Versions.rxJava2Version}"
     const val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlinVersion}"
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroidVersion}"
+
+    // RxBinding
+    const val rxbindingAndroidX = "com.jakewharton.rxbinding3:rxbinding:${Versions.rxBindingXVersion}"
 }

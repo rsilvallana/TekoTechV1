@@ -2,12 +2,16 @@ package com.teko.tekotechv1.feature.login
 
 import com.teko.common.base.BaseViewModel
 import com.teko.techdata.repository.di.AuthRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
+@HiltViewModel
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : BaseViewModel() {
@@ -20,8 +24,8 @@ class LoginViewModel @Inject constructor(
 
     fun login(email: String, password: String, isSpecial: Boolean) {
         authRepository.login(email, password, isSpecial)
-            .subscribeOn(schedulers.io())
-            .observeOn(schedulers.ui())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 _state.onNext(LoginViewModelState.ShowLoading)
             }

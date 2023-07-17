@@ -5,10 +5,11 @@ import com.teko.techdata.remote.features.auth.AuthRemoteSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn
+@InstallIn(SingletonComponent::class)
 interface RemoteSourceModule {
 
     @Binds

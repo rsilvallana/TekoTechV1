@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: '../ktlint.gradle'
 
 android {
@@ -48,7 +46,6 @@ dependencies {
     implementation Libs.navigationFragmentKtx
     implementation Libs.navigationFragments
     implementation Libs.navigationFragmentUI
-
 
     testImplementation TestLibs.junit
     testImplementation TestLibs.archCoreTesting

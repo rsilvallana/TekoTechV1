@@ -24,6 +24,7 @@ object Versions {
 
     // Hilt
     const val hiltVersion = "2.42"
+    const val hiltAndroidVersion = "1.0.0-alpha03"
 
     // Retrofit
     const val retrofitVersion = "2.9.0"
@@ -50,6 +51,9 @@ object Versions {
     const val rxJava2Version = "2.2.21"
     const val rxKotlinVersion = "2.4.0"
     const val rxAndroidVersion = "2.1.1"
+
+    // RxBinding
+    const val rxBindingXVersion = "3.0.0-alpha2"
     // endregion
 
     // region Test
