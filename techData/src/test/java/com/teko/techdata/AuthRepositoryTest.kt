@@ -35,4 +35,19 @@ class AuthRepositoryTest {
 
         verify { authRemoteSource.login(any(), any(), any()) }
     }
+
+    @Test
+    fun checkSession_ShouldCallFromRemoteSource() {
+        val responseUser = mockk<User>()
+        every {
+            authRemoteSource.checkSession()
+        } returns
+            Single.just(responseUser)
+
+        sut.checkSession()
+
+        verify {
+            authRemoteSource.checkSession()
+        }
+    }
 }

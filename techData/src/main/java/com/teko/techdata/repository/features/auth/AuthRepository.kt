@@ -11,4 +11,6 @@ interface AuthRepository {
         password: String,
         isSpecial: Boolean
     ): Single<Pair<User, AccessToken>>
+
+    fun checkSession(): Single<User>
 }

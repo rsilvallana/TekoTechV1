@@ -18,4 +18,9 @@ class AuthRepositoryImpl @Inject constructor(
         // TODO usage of local
         return authRemoteSource.login(email, password, isSpecial)
     }
+
+    override fun checkSession(): Single<User> {
+        return authRemoteSource
+            .checkSession()
+    }
 }

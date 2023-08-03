@@ -35,4 +35,12 @@ class AuthRemoteSourceImpl @Inject constructor(
                 )
             }
     }
+
+    override fun checkSession(): Single<User> {
+        return techApiServices
+            .checkSession()
+            .map {
+                LoginResponse.toDomain(it)
+            }
+    }
 }

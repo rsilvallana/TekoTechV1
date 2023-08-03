@@ -1,6 +1,5 @@
 package com.teko.techdata
 
-import com.teko.commondata.remote.BaseRemoteSource
 import com.teko.techdata.remote.TechApiServices
 import com.teko.techdata.remote.features.auth.AuthRemoteSource
 import com.teko.techdata.remote.features.auth.AuthRemoteSourceImpl
@@ -35,5 +34,18 @@ class AuthRemoteSourceTest {
         sut.login("email", "pass", false)
 
         verify { api.login(any()) }
+    }
+
+    @Test
+    fun checkSession_ShouldCallFromService() {
+        val response = mockk<LoginResponse>()
+        every {
+            api.checkSession()
+        } returns
+            Single.just(response)
+
+        sut.checkSession()
+
+        verify { api.checkSession() }
     }
 }
