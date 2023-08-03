@@ -28,7 +28,8 @@ object RemoteModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
+        authenticatedInterceptor: Interceptor
     ): OkHttpClient {
 
         val builder = OkHttpClient.Builder()
@@ -40,7 +41,8 @@ object RemoteModule {
         }
 
         builder
-            .addInterceptor(ChuckerInterceptor.Builder(context).build())
+            .addInterceptor(authenticatedInterceptor)
+            .addInterceptor(ChuckerInterceptor(context))
             .retryOnConnectionFailure(true)
             .connectTimeout(50, TimeUnit.SECONDS)
             .callTimeout(50, TimeUnit.SECONDS)
