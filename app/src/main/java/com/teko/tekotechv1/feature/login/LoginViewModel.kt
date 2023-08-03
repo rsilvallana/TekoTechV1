@@ -1,7 +1,7 @@
 package com.teko.tekotechv1.feature.login
 
 import com.teko.common.base.BaseViewModel
-import com.teko.techdata.repository.di.AuthRepository
+import com.teko.techdata.repository.features.auth.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply from: '../ktlint.gradle'
 
@@ -35,6 +36,9 @@ android {
     buildFeatures {
         dataBinding true
     }
+    kapt {
+        correctErrorTypes true
+    }
 }
 
 check.dependsOn(ktlint)
@@ -48,6 +52,12 @@ dependencies {
     implementation Libs.navigationFragments
     implementation Libs.navigationFragmentUI
 
+    // Dagger-Hilt
+    implementation Libs.hilt
+    kapt Libs.hiltCompiler
+    kapt Libs.hiltAndroid
+
+    // Testing
     testImplementation TestLibs.junit
     testImplementation TestLibs.archCoreTesting
     testImplementation TestLibs.coroutineTest

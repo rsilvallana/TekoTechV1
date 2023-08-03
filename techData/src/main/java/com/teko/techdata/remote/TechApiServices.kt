@@ -9,6 +9,6 @@ import retrofit2.http.POST
 
 interface TechApiServices {
 
-    @POST
+    @POST("users/login")
     fun login(@Body payload: RequestBody): Single<Response<LoginResponse>>
 }

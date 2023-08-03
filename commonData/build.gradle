@@ -59,8 +59,7 @@ dependencies {
     api Libs.okhttpLogging
 
     // Dagger-Hilt
-    api Libs.hilt
-    api Libs.hiltViewModel
+    implementation Libs.hilt
     kapt Libs.hiltCompiler
     kapt Libs.hiltAndroid
 

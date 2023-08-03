@@ -3,7 +3,7 @@ package com.teko.techdata.remote.features.auth
 import com.google.gson.JsonObject
 import com.teko.techdata.remote.features.auth.domain.AccessToken
 import com.teko.techdata.remote.features.auth.domain.User
-import com.teko.network.base.BaseRemoteSource
+import com.teko.commondata.remote.BaseRemoteSource
 import com.teko.techdata.remote.TechApiServices
 import com.teko.techdata.remote.features.auth.dto.LoginResponse
 import io.reactivex.Single

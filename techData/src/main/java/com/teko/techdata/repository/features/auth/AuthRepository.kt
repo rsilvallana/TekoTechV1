@@ -1,4 +1,4 @@
-package com.teko.techdata.repository.di
+package com.teko.techdata.repository.features.auth
 
 import com.teko.techdata.remote.features.auth.domain.AccessToken
 import com.teko.techdata.remote.features.auth.domain.User

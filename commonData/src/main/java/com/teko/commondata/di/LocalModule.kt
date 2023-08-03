@@ -1,6 +1,5 @@
-package com.teko.commondata.local
+package com.teko.commondata.di
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -9,6 +8,7 @@ import com.teko.commondata.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -18,26 +18,26 @@ object LocalModule {
 
     @Provides
     @Singleton
-    fun providesSharedPreferences(application: Application): SharedPreferences {
+    fun providesSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return if (BuildConfig.DEBUG) {
-            application.getSharedPreferences(
-                getDefaultPreferencesName(application),
+            context.getSharedPreferences(
+                getDefaultPreferencesName(context),
                 Context.MODE_PRIVATE
             )
         } else {
             val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
             EncryptedSharedPreferences
                 .create(
-                    getDefaultPreferencesName(application),
+                    getDefaultPreferencesName(context),
                     masterKeyAlias,
-                    application,
+                    context,
                     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                     EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
                 )
         }
     }
 
-    private fun getDefaultPreferencesName(application: Application): String {
-        return application.packageName + "_prefs"
+    private fun getDefaultPreferencesName(context: Context): String {
+        return context.packageName + "_prefs"
     }
 }

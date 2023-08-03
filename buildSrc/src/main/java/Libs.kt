@@ -17,7 +17,6 @@ object Libs {
     const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltVersion}"
     const val hiltAndroid = "androidx.hilt:hilt-compiler:${Versions.hiltAndroidVersion}"
-    const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltAndroidVersion}"
 
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"

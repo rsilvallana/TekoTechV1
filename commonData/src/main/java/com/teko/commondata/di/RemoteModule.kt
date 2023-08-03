@@ -1,13 +1,15 @@
-package com.teko.commondata.remote
+package com.teko.commondata.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.teko.commondata.BuildConfig
+import com.teko.commondata.remote.ENDPOINT_FORMAT
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -26,8 +28,7 @@ object RemoteModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(
-        context: Context,
-        authenticatedInterceptor: Interceptor
+        @ApplicationContext context: Context
     ): OkHttpClient {
 
         val builder = OkHttpClient.Builder()
@@ -39,8 +40,7 @@ object RemoteModule {
         }
 
         builder
-            .addInterceptor(authenticatedInterceptor)
-            .addInterceptor(ChuckerInterceptor(context))
+            .addInterceptor(ChuckerInterceptor.Builder(context).build())
             .retryOnConnectionFailure(true)
             .connectTimeout(50, TimeUnit.SECONDS)
             .callTimeout(50, TimeUnit.SECONDS)
@@ -50,8 +50,8 @@ object RemoteModule {
         return builder.build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun providesCustomHeaderInterceptor(): Interceptor {
         return Interceptor { chain ->
             val request = chain.request()

@@ -1,12 +1,13 @@
-package com.teko.techdata.repository.di
+package com.teko.techdata.repository.features.auth
 
+import com.teko.techdata.remote.features.auth.AuthRemoteSource
 import com.teko.techdata.remote.features.auth.domain.AccessToken
 import com.teko.techdata.remote.features.auth.domain.User
 import io.reactivex.Single
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
-    private val authRemoteSource: com.teko.techdata.remote.features.auth.AuthRemoteSource
+    private val authRemoteSource: AuthRemoteSource
 ) : AuthRepository {
 
     override fun login(

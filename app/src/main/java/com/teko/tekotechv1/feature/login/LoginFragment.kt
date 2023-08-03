@@ -32,7 +32,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     .login(
                         email = binding.emailField.text.toString(),
                         password = binding.passwordField.text.toString(),
-                        isSpecial = false
+                        isSpecial = true
                     )
             }
     }

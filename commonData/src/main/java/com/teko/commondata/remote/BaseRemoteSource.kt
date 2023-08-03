@@ -1,4 +1,4 @@
-package com.teko.network.base
+package com.teko.commondata.remote
 
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody

@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../ktlint.gradle'
 
 android {
@@ -51,12 +50,6 @@ dependencies {
 
     // Rx Binding
     api Libs.rxbindingAndroidX
-
-    // Dagger-Hilt
-    api Libs.hilt
-    api Libs.hiltViewModel
-    kapt Libs.hiltCompiler
-    kapt Libs.hiltAndroid
 
     testImplementation(TestLibs.mockK) {
         exclude group: 'org.slf4j', module: 'slf4j-reload4j'

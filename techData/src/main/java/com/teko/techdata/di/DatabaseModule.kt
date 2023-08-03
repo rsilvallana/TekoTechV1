@@ -1,4 +1,4 @@
-package com.teko.techdata.local.di
+package com.teko.techdata.di
 
 import com.teko.commondata.local.DatabaseHelper
 import com.teko.techdata.local.TechDatabase

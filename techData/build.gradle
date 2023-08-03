@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply from: '../ktlint.gradle'
 
 android {
@@ -33,9 +34,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':commonData')
 
-    // JUnit
-    testImplementation TestLibs.junit
+    // Dagger-Hilt
+    implementation Libs.hilt
+    kapt Libs.hiltCompiler
+    kapt Libs.hiltAndroid
 
-    // MockK
+    // Testing
+    testImplementation TestLibs.junit
     testImplementation TestLibs.mockK
 }

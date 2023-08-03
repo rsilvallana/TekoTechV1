@@ -1,24 +1,19 @@
-package com.teko.techdata.local.di
+package com.teko.techdata.di
 
 import android.content.SharedPreferences
 import com.teko.techdata.local.TechDatabase
-import com.teko.techdata.local.features.auth.SessionLocalSource
-import com.teko.techdata.local.features.auth.SessionLocalSourceImpl
-import com.teko.techdata.local.features.auth.AccessTokenLocalSource
-import com.teko.techdata.local.features.auth.AccessTokenLocalSourceImpl
-import com.teko.techdata.local.features.auth.UserLocalSource
-import com.teko.techdata.local.features.auth.UserLocalSourceImpl
-import dagger.Binds
+import com.teko.techdata.local.features.auth.*
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface LocalSourceModule {
+object LocalSourceModule {
 
-    @Binds
+    @Provides
     @Singleton
     fun providesUserLocalSource(
         techDatabase: TechDatabase
@@ -26,7 +21,7 @@ interface LocalSourceModule {
         return UserLocalSourceImpl(techDatabase.userDao())
     }
 
-    @Binds
+    @Provides
     @Singleton
     fun providesAccessTokenLocalSource(
         sharedPreferences: SharedPreferences,
@@ -35,7 +30,7 @@ interface LocalSourceModule {
         return AccessTokenLocalSourceImpl(sharedPreferences, techDatabase.tokenDao())
     }
 
-    @Binds
+    @Provides
     @Singleton
     fun providesSessionLocalSource(
         userLocalSource: UserLocalSource,
