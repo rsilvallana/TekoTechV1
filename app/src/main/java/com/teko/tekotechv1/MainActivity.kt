@@ -19,8 +19,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        findNavController(R.id.nav_host_fragment)
-            .navigate(MainGraphDirections.actionGlobalToAuthGraph())
+        handleExtras()
+    }
+
+    private fun handleExtras() {
+        intent?.extras?.let {
+            when (it.getString(MAIN_NAVIGATION)) {
+                START_HOME -> {}
+                START_LOGIN -> {
+                    findNavController(R.id.nav_host_fragment)
+                        .navigate(MainGraphDirections.actionGlobalToAuthGraph())
+                }
+            }
+        }
     }
 
     @Suppress("DEPRECATION")
@@ -40,5 +51,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
             statusBarColor = Color.TRANSPARENT
         }
+    }
+
+    companion object {
+        const val MAIN_NAVIGATION = "main_navigation"
+
+        const val START_LOGIN = "start_login"
+        const val START_HOME = "start_home"
     }
 }

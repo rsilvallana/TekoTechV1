@@ -119,4 +119,22 @@ data class User(
             }
         }
     }
+
+    companion object {
+        fun empty(): User {
+            return User(
+                uid = "",
+                email = "",
+                firstName = "",
+                lastName = "",
+                type = "",
+                rating = "",
+                isCommercial = false,
+                photo = "",
+                details = Details.empty(),
+                assistantTools = AssistantTools.empty(),
+                isTraining = false
+            )
+        }
+    }
 }

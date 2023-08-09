@@ -1,9 +1,11 @@
 package com.teko.tekotechv1.feature.splash
 
+import android.util.Log
 import com.teko.common.base.BaseViewModel
+import com.teko.techdata.remote.features.auth.domain.User
 import com.teko.techdata.repository.features.auth.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.Observer
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -19,7 +21,7 @@ class SplashViewModel @Inject constructor(
     private val _state by lazy {
         PublishSubject.create<SplashState>()
     }
-    val state: Observer<SplashState> = _state
+    val state: Observable<SplashState> = _state
 
     fun checkSession() {
         authRepository
@@ -36,8 +38,17 @@ class SplashViewModel @Inject constructor(
                 _state.onNext(SplashState.HideLoading)
             }
             .subscribeBy(
-                onSuccess = {},
-                onError = {}
+                onSuccess = {
+                    if (it != User.empty()) {
+                        _state.onNext(SplashState.UserLoggedIn)
+                    } else {
+                        _state.onNext(SplashState.UserNotLoggedIn)
+                    }
+                },
+                onError = {
+                    // TODO handle unauthorized exception in retrofit
+                    Log.e(this::class.simpleName, it.stackTraceToString())
+                }
             )
             .addTo(disposables)
     }

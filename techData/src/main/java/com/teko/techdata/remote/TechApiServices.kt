@@ -11,7 +11,12 @@ interface TechApiServices {
     @POST("users/login")
     fun login(@Body payload: RequestBody): Single<Response<LoginResponse>>
 
-    @Headers("-Cache-Or-Network-Only: false")
+    @Headers(
+        "Cache-Control: no-cache",
+        "Accept-Encoding: identity",
+        "Host: staging-api.teko.ph",
+        "Connection: Keep-Alive"
+    )
     @GET("users/login")
     fun checkSession(): Single<LoginResponse>
 }
