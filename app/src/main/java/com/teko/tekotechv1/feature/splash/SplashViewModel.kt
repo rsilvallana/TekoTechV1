@@ -46,8 +46,8 @@ class SplashViewModel @Inject constructor(
                     }
                 },
                 onError = {
-                    // TODO handle unauthorized exception in retrofit
                     Log.e(this::class.simpleName, it.stackTraceToString())
+                    _state.onNext(SplashState.UserNotLoggedIn)
                 }
             )
             .addTo(disposables)

@@ -1,6 +1,7 @@
 package com.teko.commondata.di
 
 import android.content.Context
+import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -16,14 +17,34 @@ import javax.inject.Singleton
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import okio.IOException
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.io.InterruptedIOException
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteModule {
+
+    private fun providesIoExceptionInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            try {
+                chain.proceed(chain.request())
+            } catch (exception: Exception) {
+                when (exception) {
+                    is HttpException -> {
+                        Log.e(this::class.java.simpleName, "$exception")
+                    }
+                    is InterruptedIOException -> Unit
+                    is IOException -> Unit
+                }
+                throw exception
+            }
+        }
+    }
 
     @Provides
     @Singleton
@@ -41,6 +62,7 @@ object RemoteModule {
         }
 
         builder
+            .addInterceptor(providesIoExceptionInterceptor())
             .addInterceptor(authenticatedInterceptor)
             .addInterceptor(ChuckerInterceptor(context))
             .retryOnConnectionFailure(true)
